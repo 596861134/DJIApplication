@@ -1,0 +1,156 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.android)
+}
+
+//配置各个module共用的参数
+apply plugin: 'kotlin-android'
+// 使用@Parcelize注解必备
+apply plugin: 'kotlin-parcelize'
+//kotlin语言使用注入框架，dataBinding都需要这个，某些情况下已被ksp替代"
+//apply plugin: 'kotlin-kapt'
+// 替代kapt，但是要使用dataBinding仍要kapt
+apply plugin: 'com.google.devtools.ksp'
+//用于navigation传参的时候一种安全防护,非空，类型判断等。
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+android {
+    namespace 'com.czf.dji'
+    compileSdk compile_sdk_version
+
+    defaultConfig {
+        minSdk min_sdk_verion
+        targetSdk target_sdk_version
+        applicationId "com.czf.dji"
+        versionCode 1
+        versionName "1.0"
+
+        manifestPlaceholders["API_KEY"] = project.AIRCRAFT_API_KEY
+
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+//        compose true
+        viewBinding true
+    }
+
+    packagingOptions {
+        // 因为mrtc库内部使用了NDK的c++_shared的编译参数
+        // 与其他库重复引用了，因此选其中一个即可
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+    }
+
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+        freeCompilerArgs += ["-Xjvm-default=all"]
+    }
+
+    //关闭lint
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    packagingOptions {
+        doNotStrip "*/*/libconstants.so"
+        doNotStrip "*/*/libdji_innertools.so"
+        doNotStrip "*/*/libdjibase.so"
+        doNotStrip "*/*/libDJICSDKCommon.so"
+        doNotStrip "*/*/libDJIFlySafeCore-CSDK.so"
+        doNotStrip "*/*/libdjifs_jni-CSDK.so"
+        doNotStrip "*/*/libDJIRegister.so"
+        doNotStrip "*/*/libdjisdk_jni.so"
+        doNotStrip "*/*/libDJIUpgradeCore.so"
+        doNotStrip "*/*/libDJIUpgradeJNI.so"
+        doNotStrip "*/*/libDJIWaypointV2Core-CSDK.so"
+        doNotStrip "*/*/libdjiwpv2-CSDK.so"
+        doNotStrip "*/*/libFlightRecordEngine.so"
+        doNotStrip "*/*/libvideo-framing.so"
+        doNotStrip "*/*/libwaes.so"
+        doNotStrip "*/*/libagora-rtsa-sdk.so"
+        doNotStrip "*/*/libc++.so"
+        doNotStrip "*/*/libc++_shared.so"
+        doNotStrip "*/*/libmrtc_28181.so"
+        doNotStrip "*/*/libmrtc_agora.so"
+        doNotStrip "*/*/libmrtc_core.so"
+        doNotStrip "*/*/libmrtc_core_jni.so"
+        doNotStrip "*/*/libmrtc_data.so"
+        doNotStrip "*/*/libmrtc_log.so"
+        doNotStrip "*/*/libmrtc_onvif.so"
+        doNotStrip "*/*/libmrtc_rtmp.so"
+        doNotStrip "*/*/libmrtc_rtsp.so"
+    }
+}
+
+dependencies {
+
+    api(libs.androidx.core.ktx) {
+        exclude group: 'com.android.support', module: 'support-compat'
+    }
+    api libs.annotation
+    api(libs.appcompat){
+        exclude group: 'com.android.support', module: 'support-compat'
+    }
+    api libs.fragment.ktx
+    api libs.activity.ktx
+    api libs.kotlin.stdlib
+    api libs.kotlin.stdlib.jdk8
+    api libs.kotlinx.coroutines.core
+    api libs.kotlinx.coroutines.android
+    api libs.multidex
+    api libs.material
+
+    api libs.cardview
+    api libs.constraintlayout
+    api libs.viewpager2
+    api libs.recyclerview
+    api libs.swiperefreshlayout
+//    api libs.legacy.support.v4
+
+    implementation libs.lifecycle.livedata.ktx
+    implementation libs.lifecycle.viewmodel.ktx
+    implementation libs.lifecycle.viewmodel.savedstate
+    implementation libs.lifecycle.runtime.ktx
+    implementation libs.lifecycle.common.java8
+
+    implementation libs.navigation.ui
+    implementation libs.navigation.ui.ktx
+    implementation libs.navigation.fragment
+    implementation libs.navigation.fragment.ktx
+    implementation libs.navigation.runtime
+
+    compileOnly libs.deps.aircraftProvided
+    implementation libs.deps.aircraft
+
+    /** <-----------------sample所需--------------------> **/
+    implementation project(':uxsdk')
+    implementation libs.deps.leakcanary
+    implementation libs.deps.dynamicanimation
+    implementation libs.deps.expandedit
+    implementation libs.deps.rx3Kt
+    implementation libs.deps.dom
+    implementation libs.glide
+    ksp libs.compiler.ksp
+    implementation libs.deps.lynx
+
+}

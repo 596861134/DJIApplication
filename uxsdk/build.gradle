@@ -1,0 +1,96 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
+}
+
+//配置各个module共用的参数
+apply plugin: 'kotlin-android'
+// 使用@Parcelize注解必备
+apply plugin: 'kotlin-parcelize'
+//kotlin语言使用注入框架，dataBinding都需要这个，某些情况下已被ksp替代"
+//apply plugin: 'kotlin-kapt'
+// 替代kapt，但是要使用dataBinding仍要kapt
+apply plugin: 'com.google.devtools.ksp'
+//用于navigation传参的时候一种安全防护,非空，类型判断等。
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+//apply plugin: 'kotlin-android-extensions'
+
+android {
+    namespace 'dji.v5.ux'
+    compileSdk compile_sdk_version
+
+    defaultConfig {
+        minSdk min_sdk_verion
+        targetSdk target_sdk_version
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        freeCompilerArgs += ["-Xjvm-default=all"]
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation libs.annotation
+    implementation(libs.appcompat){
+        exclude group: 'com.android.support', module: 'support-compat'
+    }
+    implementation libs.multidex
+//    implementation libs.legacy.support.v4
+    implementation libs.recyclerview
+    implementation libs.deps.okio
+    implementation libs.deps.wire
+    implementation libs.constraintlayout
+    implementation libs.lifecycle.common.java8
+    implementation libs.lifecycle.runtime.ktx
+    implementation libs.lifecycle.livedata.ktx
+    implementation libs.lifecycle.viewmodel.ktx
+    implementation libs.lifecycle.viewmodel.savedstate
+    implementation libs.deps.media
+    implementation libs.kotlin.stdlib
+    implementation libs.kotlinx.coroutines.core
+    implementation libs.kotlinx.coroutines.android
+    implementation libs.deps.rx3Android
+    implementation libs.deps.wpmzSdk
+    implementation libs.deps.rx3Kt
+    implementation libs.deps.lottie
+    implementation libs.cardview
+
+    implementation(libs.deps.mikepenzCommunityMaterial) { artifact { type = "aar" } }
+    implementation(libs.deps.mikepenzGoogleMaterial) { artifact { type = "aar" } }
+    implementation(libs.deps.mikepenzIconicsViews) { artifact { type = "aar" } }
+    implementation(libs.deps.mikepenzIconicsCore) { artifact { type = "aar" } }
+    implementation(libs.deps.mikepenzIonicons) { artifact { type = "aar" } }
+
+    implementation libs.material
+
+    api libs.deps.maplibreAnotation
+    api libs.deps.maplibreTurf
+    api libs.deps.maplibreSdk
+
+    api libs.deps.playservicesplaces
+    api libs.deps.playservicesmaps
+    api libs.deps.playserviceslocation
+    api libs.deps.playservicesbase
+
+    compileOnly libs.deps.aircraftProvided
+    compileOnly libs.deps.aircraft
+
+
+}

@@ -1,0 +1,14 @@
+ext {
+
+    /** 当xml中没有代码提示时把版本改成32 */
+    /** compileSdkVersion>=targetSdkVersion>minSdkVersion */
+    /** 编译APP 时使用的 Android API 版本 */
+    compile_sdk_version = 34
+    /** 构建工具的版本，其中包括了打包工具aapt、dx等等。*/
+    build_tools_version = "34.0.0"
+    /** 应用程序支持的最低 API 版本 */
+    min_sdk_verion = 23
+    /** 目标版本 */
+    target_sdk_version = 30
+
+}

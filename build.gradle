@@ -1,0 +1,51 @@
+buildscript {
+    // 导入配置文件
+    apply from: 'configs.gradle'
+
+    dependencies {
+        // 使用kotlin
+        classpath libs.kotlin.gradle.plugin
+        // kotlin使用@Parcelize注解需要导入
+        classpath libs.kotlin.parcelize.runtime.plugin
+        // agp
+        classpath libs.android.gradle.plugin
+        // 使用navigation需要导入
+        classpath libs.navigation.safe.args.gradle.plugin
+    }
+
+}
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.jetbrains.kotlin.android) apply false
+    alias(libs.plugins.google.devtools.ksp) apply false
+}
+
+allprojects {
+
+    tasks.withType(JavaCompile).configureEach {
+        // 设置全局编码
+        options.encoding = 'UTF-8'
+    }
+
+    tasks.withType(Javadoc).configureEach {
+        // 设置文档编码
+        options {
+            encoding 'UTF-8'
+            charSet 'UTF-8'
+            links 'http://docs.oracle.com/javase/8/docs/api'
+        }
+    }
+
+    // 将构建文件统一输出到项目根目录下的 build 文件夹
+//    setBuildDir(new File(rootDir, "build/${path.replaceAll(':', '/')}"))
+    getLayout().setBuildDirectory(new File(rootDir, "build/${path.replaceAll(':', '/')}"))
+}
+
+
+tasks.register('clean', Delete) {
+//    delete rootProject.buildDir
+    delete rootProject.getLayout().getBuildDirectory()
+}

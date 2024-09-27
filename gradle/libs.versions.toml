@@ -1,0 +1,188 @@
+[versions]
+# Android Gradle Plugin：Android Gradle API 版本
+# https://mvnrepository.com/artifact/com.android.tools.build/gradle
+agp_version = "8.6.1"
+# Kotlin 版
+# https://github.com/JetBrains/kotlin
+kotlin_version = "2.0.20"
+# 大版本务必选择与项目的 Kotlin 版本一致的 KSP 版本
+# https://github.com/google/ksp/releases
+ksp_version = "2.0.20-1.0.25"
+
+coreKtx = "1.13.1"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+
+multidex = "2.0.1"
+appcompat = "1.7.0"
+fragmentKtx = "1.8.2"
+activityKtx = "1.9.1"
+constraintlayout = "2.1.4"
+annotation = "1.8.2"
+coroutinesKtx = "1.9.0"
+
+material = "1.12.0"
+viewpager2 = "1.1.0"
+recyclerview = "1.3.2"
+swiperefreshlayout = "1.1.0"
+cardview = "1.0.0"
+legacySupportV4 = "1.0.0"
+lifecycle_version = "2.8.4"
+navigation_version = "2.7.7"
+smoothNavigation = "4.0.0"
+
+room_version = "2.6.1"
+media_version = "1.0.0"
+dynamicanimation = "1.0.0"
+documentfile = "1.0.1"
+dom4j = "2.1.4"
+dji = "5.10.0"
+gson = "2.11.0"
+okio = "1.17.2"
+rxandroid = "3.0.2"
+rxkotlin = "3.0.0"
+sqlcipher = "4.5.1"
+wire-runtime = "2.2.0"
+okhttp = "3.14.9"
+leakcanary = "2.11"
+xcrash = "3.1.0"
+rxjava = "2.2.4"
+annotation-v9 = "1.0.0"
+maplibreTurf = "5.9.1"
+maplibreSdk = "9.4.2"
+lottie = "3.3.1"
+lynx = "1.1.0"
+glide_version = "4.16.0"
+mikepenzCommunityMaterial = "3.5.95.1-kotlin"
+mikepenzGoogleMaterial = "3.0.1.4.original-kotlin"
+mikepenzIconicsViews = "4.0.2"
+mikepenzIconicsCore = "4.0.2"
+mikepenzIonicons = "2.0.1.5-kotlin"
+wpmzsdk = "1.0.1.7"
+expandedit = "1.0.7"
+aspectj = "1.9.6"
+google = "17.0.0"
+
+
+
+[libraries]
+# 项目相关基础库 项目根目录build.gradle-》dependencies
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin_version" }
+kotlin-parcelize-runtime-plugin = { module = "org.jetbrains.kotlin:kotlin-parcelize-runtime", version.ref = "kotlin_version" }
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp_version" }
+navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigation_version" }
+
+
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
+activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
+multidex = { group = "androidx.multidex", name = "multidex", version.ref = "multidex" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "viewpager2" }
+recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
+#legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
+cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin_version" }
+kotlin-stdlib-jdk8 = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin_version" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutinesKtx" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutinesKtx" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# lifecycle
+lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle_version" }
+lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle_version" }
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle_version" }
+lifecycle-viewmodel-savedstate = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-savedstate", version.ref = "lifecycle_version" }
+lifecycle-common-java8 = { group = "androidx.lifecycle", name = "lifecycle-common-java8", version.ref = "lifecycle_version" }
+
+# navigation
+navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigation_version" }
+navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation_version" }
+navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigation_version" }
+navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation_version" }
+navigation-runtime = { group = "androidx.navigation", name = "navigation-runtime", version.ref = "navigation_version" }
+navigation-smooth = { group = "com.kunminx.arch", name = "smooth-navigation", version.ref = "smoothNavigation" }
+
+
+#androidx
+deps-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room_version" }
+deps-room-rxjava3 = { group = "androidx.room", name = "room-rxjava3", version.ref = "room_version" }
+deps-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room_version" }
+deps-media = { group = "androidx.media", name = "media", version.ref = "media_version" }
+deps-dynamicanimation = { group = "androidx.dynamicanimation", name = "dynamicanimation", version.ref = "dynamicanimation" }
+deps-documentfile = { group = "androidx.documentfile", name = "documentfile", version.ref = "documentfile" }
+#解析xml
+deps-dom = { group = "org.dom4j", name = "dom4j", version.ref = "dom4j" }
+
+# DJI MSDK V5包
+deps-aircraft = { group = "com.dji", name = "dji-sdk-v5-aircraft", version.ref = "dji" }
+deps-aircraftProvided = { group = "com.dji", name = "dji-sdk-v5-aircraft-provided", version.ref = "dji" }
+deps-networkImp = { group = "com.dji", name = "dji-sdk-v5-networkImp", version.ref = "dji" }
+
+# 三方依赖库
+deps-gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+deps-okio = { group = "com.squareup.okio", name = "okio", version.ref = "okio" }
+deps-rx3Android = { group = "io.reactivex.rxjava3", name = "rxandroid", version.ref = "rxandroid" }
+deps-rx3Kt = { group = "io.reactivex.rxjava3", name = "rxkotlin", version.ref = "rxkotlin" }
+deps-sqlcipher = { group = "net.zetetic", name = "android-database-sqlcipher", version.ref = "sqlcipher" }
+deps-wire = { group = "com.squareup.wire", name = "wire-runtime", version.ref = "wire-runtime" }
+
+deps-okhttp3 = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+deps-leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", version.ref = "leakcanary" }
+deps-xcrash = { group = "com.iqiyi.xcrash", name = "xcrash-android-lib", version.ref = "xcrash" }
+# 目前在CSDK升级模块中使用rxjava2
+deps-rx2Java = { group = "io.reactivex.rxjava2", name = "rxjava", version.ref = "rxjava" }
+deps-maplibreAnotation = { group = "org.maplibre.gl", name = "android-plugin-annotation-v9", version.ref = "annotation-v9" }
+deps-maplibreTurf = { group = "org.maplibre.gl", name = "android-sdk-turf", version.ref = "maplibreTurf" }
+deps-maplibreSdk = { group = "org.maplibre.gl", name = "android-sdk", version.ref = "maplibreSdk" }
+#RTK扫描页中使用，用于实现动画效果
+deps-lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
+# app显示logcat
+deps-lynx = { group = "com.github.pedrovgs", name = "lynx", version.ref = "lynx" }
+
+# /*RTK设置页面使用-start*/
+deps-mikepenzCommunityMaterial = { group = "com.mikepenz", name = "community-material-typeface", version.ref = "mikepenzCommunityMaterial" }
+deps-mikepenzGoogleMaterial = { group = "com.mikepenz", name = "google-material-typeface", version.ref = "mikepenzGoogleMaterial" }
+deps-mikepenzIconicsViews = { group = "com.mikepenz", name = "iconics-views", version.ref = "mikepenzIconicsViews" }
+deps-mikepenzIconicsCore = { group = "com.mikepenz", name = "iconics-core", version.ref = "mikepenzIconicsCore" }
+deps-mikepenzIonicons = { group = "com.mikepenz", name = "ionicons-typeface", version.ref = "mikepenzIonicons" }
+# /*RTK设置页面使用-end*/
+
+#google map
+deps-playservicesplaces = { group = "com.google.android.gms", name = "play-services-places", version.ref = "google" }
+deps-playservicesmaps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "google" }
+deps-playserviceslocation = { group = "com.google.android.gms", name = "play-services-location", version.ref = "google" }
+deps-playservicesbase = { group = "com.google.android.gms", name = "play-services-base", version.ref = "google" }
+
+#glide
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide_version" }
+compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide_version" }
+compiler-ksp = { group = "com.github.bumptech.glide", name = "ksp", version.ref = "glide_version" }
+
+#wpmz 航线文件解析
+#本地依赖验证时将该aar放到主工程目录sdklib 并将sdk中aircraft 的gradle添加为本地依赖方式 api (name:"djisdkwpmz", ext:'aar')
+deps-wpmzSdk = { group = "com.dji", name = "wpmzsdk", version.ref = "wpmzsdk" }
+#sample 扩展EditText
+deps-expandedit = { group = "com.github.thomhurst", name = "ExpandableHintText", version.ref = "expandedit" }
+
+#测试
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+
+#aspectJ
+deps-aspectj-tools = { group = "org.aspectj", name = "aspectjtools", version.ref = "aspectj" }
+deps-aspectj-rt = { group = "org.aspectj", name = "aspectjrt", version.ref = "aspectj" }
+deps-aspectj-weaver = { group = "org.aspectj", name = "aspectjweaver", version.ref = "aspectj" }
+
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp_version" }
+android-library = { id = "com.android.library", version.ref = "agp_version" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin_version" }
+# 大版本务必选择与项目的 Kotlin 版本一致的 KSP 版本
+google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp_version" }
